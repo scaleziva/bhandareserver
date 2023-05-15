@@ -380,4 +380,8 @@ router.get("/logout", (req, res) => {
     res.status(200).json({ msg: "Log out success" });
 });
 
+router.get("*", (req, res) => {
+    res.send("<h1>Heyy there!</h1>")
+  });
+
 module.exports = router;
