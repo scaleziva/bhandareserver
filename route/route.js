@@ -268,7 +268,7 @@ router.post("/getnoti", auth, async (req, res) => {
                 res.status(404).json({ error: "Invalid credentials" });
             } else {
                 let data = isUser.notifications;
-                
+
                 res.status(200).send(data);
             }
         }
@@ -369,8 +369,24 @@ router.post("/isuserauthenticate", auth, async (req, res) => {
 });
 
 //isuser authenticate? for profile
-router.post("/isuserauthenticateprofile", auth, async (req, res) => {
-    res.status(200).json({ msg: req.rootUser });
+router.post("/isuserauthenticateprofile", async (req, res) => {
+
+    const { token } = req.body;
+
+    try {
+        const rootUser = await User.findOne({ "tokens.token": token });
+
+        if (!rootUser) {
+            res.status(401).send("User not found");
+        } else {
+            res.status(200).json({ msg: rootUser });
+        }
+
+    } catch (error) {
+        res.status(401).send("Unauthorized: No tokens found");
+        // console.log(error);
+    }
+
 });
 
 // logout
@@ -382,6 +398,6 @@ router.get("/logout", (req, res) => {
 
 router.get("*", (req, res) => {
     res.send("<h1>Heyy there!</h1>")
-  });
+});
 
 module.exports = router;
