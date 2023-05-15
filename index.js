@@ -11,6 +11,10 @@ dotenv.config({ path: "./config.env" });
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
+//cors
+const cors = require("cors");
+app.use(cors());
+
 //importing db
 require("./db/conn");
 
