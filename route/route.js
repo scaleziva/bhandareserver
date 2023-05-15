@@ -280,7 +280,7 @@ router.post("/getnoti", auth, async (req, res) => {
 })
 
 //change password
-router.put("/changepass", auth, async (req, res) => {
+router.post("/changepass", auth, async (req, res) => {
 
     try {
         const { password, newPassword } = req.body;
@@ -310,7 +310,7 @@ router.put("/changepass", auth, async (req, res) => {
 });
 
 //editprofile
-router.put("/editprofile", auth, async (req, res) => {
+router.post("/editprofile", auth, async (req, res) => {
 
     try {
         const { name, phone, capital, initialcapital } = req.body;
@@ -339,7 +339,7 @@ router.put("/editprofile", auth, async (req, res) => {
 });
 
 // delete account
-router.delete("/deleteaccount", auth, async (req, res) => {
+router.post("/deleteaccount", auth, async (req, res) => {
 
     const { password } = req.body;
     const email = req.email;
