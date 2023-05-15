@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
                     });
                     // i'll need to install cookieParser!
                     console.log("Login Successful");
-                    res.status(200).json({ message: "Login Successful!" });
+                    res.status(200).json({ message: token });
 
                 } else {
                     res.status(404).json({ error: "Invalid credentials" });
