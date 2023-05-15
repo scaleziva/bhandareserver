@@ -381,7 +381,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("*", (req, res) => {
-    res.send("<h1>Heyy there!</h1>")
+    res.send("<h1>Heyy there! updated</h1>")
   });
 
 module.exports = router;
